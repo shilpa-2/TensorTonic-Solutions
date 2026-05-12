@@ -14,10 +14,8 @@ def naive_bayes_bernoulli(X_train, y_train, X_test):
             Xc = X_train[y_train == c]
             prior = np.log(len(Xc) / len(X_train))
             theta = (Xc.sum(axis=0) + 1) / (len(Xc) + 2)
-
             ll = np.sum(x * np.log(theta) +
                         (1 - x) * np.log(1 - theta))
-
             row.append(prior + ll)
         res.append(row)
     return np.array(res)
